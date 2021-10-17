@@ -1,0 +1,41 @@
+
+<div class="container-fluid">
+
+<div class="well">
+  <h2>Enter a zipcode:</h2>
+  <input class="form-control" placeholder="Zipcode" type="text" id="addLocation" [(ngModel)]='zipcode'required maxlength="5" style="width: 150px;" >
+  <br>
+  <button class="btn btn-primary" id="addLocationBtn" (click)="onAddLocation()">
+    Add Zipcode
+  </button>
+  
+  </div>
+  </div>
+
+<div >
+<div class="well flex" *ngFor='let currentDetails of ListDetails; index as i' style="border: solid;">
+    <div>
+      <h3>{{currentDetails.cityName}} ({{currentDetails.zipcode}})</h3>
+      <h4>Current conditions: {{currentDetails.description}}</h4>
+      <h4>Temperatures today:</h4>
+      <p>
+        Current {{currentDetails.currentTemperature}} F
+        - Max {{currentDetails.maxTemperature}} F
+        - Min {{currentDetails.minTemperature}} F
+      </p>
+      
+      <p>
+        <a [routerLink]="" (click)="goToLink(currentDetails.zipcode)">Show 5-day forecast for {{currentDetails.cityName}}</a>
+         
+      </p>
+    </div>
+    <div *ngIf="currentDetails.icon !==''">
+      <img src="https://www.angulartraining.com/images/weather/{{currentDetails.icon}}.png">   
+    </div>
+    <div> <button class="close" (click)='remove(i)'>×</button></div>
+ </div>
+</div>
+<router-outlet></router-outlet>
+
+
+

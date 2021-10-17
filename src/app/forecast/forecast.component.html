@@ -1,0 +1,22 @@
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"> 5-day forecast for {{weatherData.name}}</h3>
+
+        </div>
+        <ul class="list-group" *ngFor="let detail of weatherData.details">
+
+            <li class="list-group-item" style="width: 700px;">
+                {{detail.date | date : 'EEEE'}}:
+                {{detail.description}}
+                - Min: {{detail.minTemperature}} F
+                - Max: {{detail.maxTemperature}} F
+                <div *ngIf="detail.icon!==''">
+                    <img class="icon" src="https://www.angulartraining.com/images/weather/{{detail.icon}}.png">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <button class="btn btn-success" tabindex="0" id="mainPageBtn" (click)="btnClick();"> Back to main page</button>
+</div>
